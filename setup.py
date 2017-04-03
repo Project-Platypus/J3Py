@@ -10,7 +10,7 @@ setup(name='J3Py',
       license="GNU GPL version 3",
       url='https://github.com/Project-Platypus/J3Py',
       packages=['j3'],
-      install_requires=['numpy'],
+      install_requires=[],
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',

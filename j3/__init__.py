@@ -50,7 +50,8 @@ def J3(data = None, **kwargs):
         if max_id >= 0:
             id = str(max_id)
     
-    # now attempt to locate the folder containing the latest J3 install
+    # now attempt to locate the folder containing the latest J3 install; if it
+    # doesn't exist, download the latest version of J3 from github.com
     install_dir = os.path.join(j3_dir, id)
     j3_path = None
     
@@ -69,7 +70,7 @@ def J3(data = None, **kwargs):
     if j3_path is None or not os.path.exists(j3_path):
         raise RuntimeError("Unable to locate or download J3")
     
-    # create a temporary file storing the plot contents
+    # launch J3 with the given input
     if data is None:
         os.system(r'java -cp "%s" j3.GUI' % (os.path.abspath(j3_path),))
     else:
