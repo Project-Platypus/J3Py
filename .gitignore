@@ -1,0 +1,9 @@
+.project
+.pydevproject
+*.pyc
+.settings/
+.eggs/
+build/
+dist/
+J3Py.egg-info/
+.ipynb_checkpoints/
