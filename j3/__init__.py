@@ -53,18 +53,16 @@ def J3(data = None, **kwargs):
     # now attempt to locate the folder containing the latest J3 install; if it
     # doesn't exist, download the latest version of J3 from github.com
     install_dir = os.path.join(j3_dir, id)
-    j3_path = None
-    
-    if os.path.exists(install_dir):
-        j3_path = os.path.join(install_dir, "J3-Full.jar")
-    else:
-        os.makedirs(install_dir)
+    j3_path = os.path.join(install_dir, "J3-Full.jar")
+
+    if not os.path.exists(j3_path):
+        os.makedirs(install_dir, exist_ok=True)
         
         try:
             urllib.request.urlretrieve(asset["browser_download_url"], j3_path)
-            j3_path = os.path.join(install_dir, "J3-Full.jar")
         except urllib.error.URLError:
             print("Unable to download the latest J3 version from github.com", file=sys.stderr)
+            j3_path = None
        
     # raise an error if we still can't locate J3     
     if j3_path is None or not os.path.exists(j3_path):
